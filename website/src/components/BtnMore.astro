@@ -1,0 +1,14 @@
+---
+interface Props {
+  link: string;
+}
+
+const { link } = Astro.props;
+---
+
+<div class="flexbox justify-end">
+  <a href={ link } class="btn-more flexbox justify-center items-center">
+    <span>もっと見る</span>
+    <img src="/img/double_arrow.svg" alt="矢印" />
+  </a>
+</div>

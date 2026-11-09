@@ -1,0 +1,132 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Feature from "../components/Feature.astro";
+import BtnMore from "../components/BtnMore.astro";
+import FAQItem from "../components/FAQItem.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="home-container">
+        <section class="home-main">
+          <h2>ホーム画面を、分かりやすくシンプルに。</h2>
+          <div class="badge-container flexbox">
+            <a href="" class="android-badge">Google Play</a>
+            <a href="" class="ios-badge">App Store</a>
+          </div>
+          <img src="/img/hero.jpg" alt="ヒーローイメージ" class="hero-img">
+        </section>
+        <section class="home-feature">
+          <h2 class="section-title">おすすめ製品</h2>
+          <div class="flexbox justify-center items-center">
+            <Feature
+              productName="電子工作を楽しむための情報サイト"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+            <Feature
+              productName="電子工作を楽しむための情報サイト"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+            <Feature
+              productName="電子工作を楽しむための情報サイト"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+          </div>
+          <BtnMore href="/products/" />
+        </section>
+        <section class="home-news">
+          <h2 class="section-title">お知らせ</h2>
+          <div class="news-items">
+            <div class="news-item">
+              <div class="news-header">
+                <span class="news-date">2024-06-01</span>
+                <span class="news-tag">NEWS</span>
+              </div>
+              <a href="" class="news-title">ニュース１０</a>
+            </div>
+            <div class="news-item">
+              <div class="news-header">
+                <span class="news-date">2024-06-01</span>
+                <span class="news-tag">NEWS</span>
+              </div>
+              <a href="" class="news-title">ニュース９ニュース９ニュース９ニュース９ニュース９ニュ</a>
+            </div>
+            <div class="news-item">
+              <div class="news-header">
+                <span class="news-date">2024-06-01</span>
+                <span class="news-tag">PRODUCTS</span>
+              </div>
+              <a href="" class="news-title">ニュース８</a>
+            </div>
+          </div>
+          <BtnMore href="/news/" />
+        </section>
+        <section class="home-concept">
+          <h2 class="section-title">コンセプト</h2>
+          <div class="flexbox justify-center items-center">
+            <Feature
+              productName="速い"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+            <Feature
+              productName="易い"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+            <Feature
+              productName="巧い"
+              productDesc="電子工作に関する情報を提供するサイトです。"
+              productImage="/img/feature001.jpg"
+            />
+          </div>
+        </section>
+        <section class="home-faq">
+          <h2 class="section-title">よくある質問</h2>
+          <div class="faq-items">
+            <FAQItem
+            question="１つ目の質問をここに記す。"
+            answer="１つ目の回答をここに記す。"
+            />
+            <FAQItem
+            question="１つ目の質問をここに記す。"
+            answer="１つ目の回答をここに記す。"
+            />
+            <FAQItem
+            question="１つ目の質問をここに記す。"
+            answer="１つ目の回答をここに記す。"
+            />
+          </div>
+          <BtnMore href="/faq/" />
+        </section>
+        <section class="home-about">
+          <h2 class="section-title">事業者情報</h2>
+          <div class="company-info">
+            <dl>
+              <dt>屋号：</dt>
+              <dd>電子工房たそかれ（Atelier TASOKARE）</dd>
+              <dt>代表：</dt>
+              <dd>中村　徹</dd>
+              <dt>事業内容：</dt>
+              <dd>スマートフォン向けアプリケーションの企画・開発・販売</dd>
+            </dl>
+          </div>
+          <BtnMore href="/about/" />
+        </section>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+import { BUSINESS_NAME, COPYRIGHT, FOOTER_MESSAGE, EMAIL_ADDRESS } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+const startYear = 2018;
+const thisYear = new Date().getFullYear();
+const businessYear = thisYear > startYear ? `${startYear} - ${thisYear}` : thisYear;
+---
+
+<footer>
+	<nav class="footer">
+    <a href="/"><h2>{ BUSINESS_NAME }</h2></a>
+    <ul>
+        <li><HeaderLink href="/">ホーム</HeaderLink></li>
+        <li><HeaderLink href="/products">製品情報</HeaderLink></li>
+        <li><HeaderLink href="/news">新着情報</HeaderLink></li>
+        <li><HeaderLink href="/faq">よくある質問</HeaderLink></li>
+        <li><HeaderLink href="/about">事業者情報</HeaderLink></li>
+        <li><HeaderLink href="/privacypolicy" target="_blank">プライバシーポリシー</HeaderLink></li>
+    </ul>
+</nav>
+<div class="footer-info">
+    <div class="company-info">
+        <h2>{ FOOTER_MESSAGE }</h2>
+        <p>E-mail: { EMAIL_ADDRESS }</p>
+    </div>
+    <small class="copyright">&copy; { businessYear } { COPYRIGHT }. All rights reserved.</small>
+</div>
+</footer>

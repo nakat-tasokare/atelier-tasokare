@@ -1,0 +1,15 @@
+---
+interface Props {
+  productName: string;
+  productDesc: string;
+  productImage: string;
+}
+
+const { productName, productDesc, productImage } = Astro.props;
+---
+
+<div class="feature-panel">
+  <h3>{ productName }</h3>
+  <p>{ productDesc }</p>
+  { productImage && <img src={ productImage } alt={ productName } /> }
+</div>

@@ -1,0 +1,32 @@
+---
+import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="header">
+    <a href="/">
+      <h1>{ SITE_TITLE }</h1>
+      <img src="/img/logo.svg" alt="logo" class="logo" />
+    </a>
+    <input id="nav-input" type="checkbox" class="nav-hidden" />
+    <label id="menu-btn" for="nav-input">
+      <div class="icon-animation">
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
+      </div>
+    </label>
+    <ul>
+      <li>
+        <HeaderLink href="/">ホーム</HeaderLink>
+        <HeaderLink href="/products">製品情報</HeaderLink>
+        <HeaderLink href="/news">新着情報</HeaderLink>
+        <HeaderLink href="/faq">よくある質問</HeaderLink>
+        <HeaderLink href="/about">事業者情報</HeaderLink>
+      </li>
+    </ul>
+  </nav>
+</header>
