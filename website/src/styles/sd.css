@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 | Style Designer
 | A liteweight CSS framework.
@@ -1569,16 +1570,47 @@ section.home-about {
 section.privacypolicy {
   display: block;
   margin: 20px auto;
-  padding: 0 20px;
+  padding: 20px;
   max-width: 720px;
 }
 
-.privacypolicy h4 {
+.privacypolicy-container h1 {
+  font-size: 2rem;
+  margin-top: 8px;
+}
+
+.privacypolicy-container h2 {
   font-size: 1.6rem;
   margin-top: 8px;
 }
 
-.privacypolicy p {
+.privacypolicy-container h2:before {
+  content: "■ ";
+}
+
+.privacypolicy-container h3 {
+  font-size: 1.6rem;
+  margin-top: 8px;
+}
+
+.privacypolicy-container h4 {
+  font-size: 1.6rem;
+  margin-top: 8px;
+}
+
+.privacypolicy-container p {
   font-size: 1.6rem;
   padding: 10px 0;
+}
+
+.privacypolicy-container ul {
+  list-style: disc;
+  margin-left: 20px;
+  font-size: 1.6rem;
+  padding: 10px 0;
+}
+
+code {
+  font-family: Inter, "Noto Sans JP", sans-serif;
+  font-size: 1.6rem;
 }/*# sourceMappingURL=sd.css.map */
