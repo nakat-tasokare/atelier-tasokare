@@ -6,6 +6,11 @@ import Feature from "../components/Feature.astro";
 import BtnMore from "../components/BtnMore.astro";
 import FAQItem from "../components/FAQItem.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from 'astro:content';
+
+const news = (await getCollection('news')).sort(
+  (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+).slice(0, 5);
 ---
 
 <!doctype html>
@@ -18,60 +23,49 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <main>
       <div class="home-container">
         <section class="home-main">
-          <h2>ホーム画面を、分かりやすくシンプルに。</h2>
+          <h2>ホーム画面を、見やすくシンプルに。</h2>
           <div class="badge-container flexbox">
-            <a href="" class="android-badge">Google Play</a>
-            <a href="" class="ios-badge">App Store</a>
+            <a href="" class="comingsoon">鋭意開発中！</a>
+            <!-- <a href="" class="android-badge">Google Play</a> -->
+            <!-- <a href="" class="ios-badge">App Store</a> -->
           </div>
-          <img src="/img/hero.jpg" alt="ヒーローイメージ" class="hero-img">
+          <img src="/img/hero.png" alt="ヒーローイメージ" class="hero-img">
         </section>
         <section class="home-feature">
           <h2 class="section-title">おすすめ製品</h2>
           <div class="flexbox justify-center items-center">
             <Feature
-              productName="電子工作を楽しむための情報サイト"
-              productDesc="電子工作に関する情報を提供するサイトです。"
-              productImage="/img/feature001.jpg"
+              productName="たそかれホーム"
+              productDesc="ホーム画面を、見やすくシンプルに。"
+              productImage="/img/feature001.png"
             />
             <Feature
-              productName="電子工作を楽しむための情報サイト"
-              productDesc="電子工作に関する情報を提供するサイトです。"
-              productImage="/img/feature001.jpg"
+              productName="メモリア"
+              productDesc="自分だけのタイムラインを作ろう。"
+              productImage="/img/feature001.png"
             />
             <Feature
-              productName="電子工作を楽しむための情報サイト"
-              productDesc="電子工作に関する情報を提供するサイトです。"
-              productImage="/img/feature001.jpg"
+              productName="その他"
+              productDesc="便利で役立つアプリを続々リリース予定。"
+              productImage="/img/feature001.png"
             />
           </div>
-          <BtnMore href="/products/" />
+          <BtnMore link="/products/" />
         </section>
         <section class="home-news">
           <h2 class="section-title">お知らせ</h2>
           <div class="news-items">
-            <div class="news-item">
-              <div class="news-header">
-                <span class="news-date">2024-06-01</span>
-                <span class="news-tag">NEWS</span>
+            {news.map((item) => (
+              <div class="news-item">
+                <div class="news-header">
+                  <span class="news-date">{item.data.published.toISOString().split('T')[0]}</span>
+                  <span class="news-tag">{item.data.tag}</span>
+                </div>
+                <a href={`/news/${item.id}/`} class="news-title">{item.data.title}</a>
               </div>
-              <a href="" class="news-title">ニュース１０</a>
-            </div>
-            <div class="news-item">
-              <div class="news-header">
-                <span class="news-date">2024-06-01</span>
-                <span class="news-tag">NEWS</span>
-              </div>
-              <a href="" class="news-title">ニュース９ニュース９ニュース９ニュース９ニュース９ニュ</a>
-            </div>
-            <div class="news-item">
-              <div class="news-header">
-                <span class="news-date">2024-06-01</span>
-                <span class="news-tag">PRODUCTS</span>
-              </div>
-              <a href="" class="news-title">ニュース８</a>
-            </div>
+            ))}
           </div>
-          <BtnMore href="/news/" />
+          <BtnMore link="/news/" />
         </section>
         <section class="home-concept">
           <h2 class="section-title">コンセプト</h2>
@@ -109,7 +103,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
             answer="１つ目の回答をここに記す。"
             />
           </div>
-          <BtnMore href="/faq/" />
+          <BtnMore link="/faq/" />
         </section>
         <section class="home-about">
           <h2 class="section-title">事業者情報</h2>
@@ -123,7 +117,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               <dd>スマートフォン向けアプリケーションの企画・開発・販売</dd>
             </dl>
           </div>
-          <BtnMore href="/about/" />
+          <BtnMore link="/about/" />
         </section>
       </div>
     </main>

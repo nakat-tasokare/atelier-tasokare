@@ -35,6 +35,7 @@ const news = defineCollection({
 			description: z.string(),
 			published: z.coerce.date(),
 			thumbnail: z.optional(image()),
+			tag: z.string().default('NEWS'),
 		}),
 });
 
