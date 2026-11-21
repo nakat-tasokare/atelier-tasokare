@@ -166,8 +166,8 @@
 
 ### **電子工房たそかれ**
 
-メールアドレス： `contact@atelier-tasokare.com`
+E-mail：`contact@atelier-tasokare.com`
 
 ---
 
-制定日：2026年11月1日
+制定日：2026年10月2日

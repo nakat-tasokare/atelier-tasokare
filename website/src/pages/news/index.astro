@@ -1,0 +1,53 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import { getCollection } from 'astro:content';
+
+const news = (await getCollection('news')).sort(
+  (a, b) => {
+    let order = b.data.published.valueOf() - a.data.published.valueOf();
+
+    if (order === 0) {
+      order = b.data.order - a.data.order;
+    }
+
+    return order;
+  }
+);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="sticky-footer">
+    <Header />
+    <main class="flex-1">
+      <section class="news">
+        <div class="content-title">
+          <h2>NEWS</h2>
+          <h3>ニュース</h3>
+        </div>
+        <div class="main-container max-w-720">
+          <div class="content">
+            <div class="news-items">
+              {news.map((item) => (
+                <div class="news-item">
+                  <div class="news-header">
+                    <span class="news-date">{item.data.published.toISOString().split('T')[0]}</span>
+                    <span class="news-tag">{item.data.tag}</span>
+                  </div>
+                  <a href={`/news/${item.id}/`} class="news-title">{item.data.title}</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

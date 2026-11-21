@@ -2,9 +2,10 @@
 import BaseHead from "../../components/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import { getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const entry = await getEntry('privacypolicy', 'latest');
-const { Content } = await render(entry);
+const latest = (await getCollection('privacypolicy'))[0];
+const { Content } = await render(latest);
 ---
 
 <!doctype html>
@@ -14,11 +15,17 @@ const { Content } = await render(entry);
   </head>
   <body>
     <main>
-      <section class="privacypolicy">
-        <div class="privacypolicy-container">
-          <Content />
+      <div class="main-container max-w-720">
+        <div class="content-title">
+          <h2>PRIVACY POLICY</h2>
+          <h3>個人情報保護方針</h3>
         </div>
-      </section>
+        <div class="content privacypolicy">
+          <div class="privacypolicy-container">
+            <Content />
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

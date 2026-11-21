@@ -9,7 +9,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from 'astro:content';
 
 const news = (await getCollection('news')).sort(
-  (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+  (a, b) => {
+    let order = b.data.published.valueOf() - a.data.published.valueOf();
+
+    if (order === 0) {
+      order = b.data.order - a.data.order;
+    }
+
+    return order;
+  }
 ).slice(0, 5);
 ---
 
@@ -23,15 +31,16 @@ const news = (await getCollection('news')).sort(
     <main>
       <div class="home-container">
         <section class="home-main">
-          <h2>ホーム画面を、見やすくシンプルに。</h2>
+          <h2>たそかれホーム</h2>
+          <h3>ホーム画面を見やすくシンプルに。</h3>
           <div class="badge-container flexbox">
-            <a href="" class="comingsoon">鋭意開発中！</a>
+            <div class="comingsoon">鋭意開発中！</div>
             <!-- <a href="" class="android-badge">Google Play</a> -->
             <!-- <a href="" class="ios-badge">App Store</a> -->
           </div>
           <img src="/img/hero.png" alt="ヒーローイメージ" class="hero-img">
         </section>
-        <section class="home-feature">
+        <!-- <section class="home-feature">
           <h2 class="section-title">おすすめ製品</h2>
           <div class="flexbox justify-center items-center">
             <Feature
@@ -51,23 +60,27 @@ const news = (await getCollection('news')).sort(
             />
           </div>
           <BtnMore link="/products/" />
-        </section>
+        </section> -->
         <section class="home-news">
-          <h2 class="section-title">お知らせ</h2>
-          <div class="news-items">
-            {news.map((item) => (
-              <div class="news-item">
-                <div class="news-header">
-                  <span class="news-date">{item.data.published.toISOString().split('T')[0]}</span>
-                  <span class="news-tag">{item.data.tag}</span>
+          <h2 class="section-title">ニュース</h2>
+          <div class="main-container max-w-720">
+            <div class="content">
+              <div class="news-items">
+                  {news.map((item) => (
+                    <div class="news-item">
+                      <div class="news-header">
+                        <span class="news-date">{item.data.published.toISOString().split('T')[0]}</span>
+                        <span class="news-tag">{item.data.tag}</span>
+                      </div>
+                      <a href={`/news/${item.id}/`} class="news-title">{item.data.title}</a>
+                    </div>
+                  ))}
                 </div>
-                <a href={`/news/${item.id}/`} class="news-title">{item.data.title}</a>
               </div>
-            ))}
+            <BtnMore link="/news/" />
           </div>
-          <BtnMore link="/news/" />
         </section>
-        <section class="home-concept">
+        <!-- <section class="home-concept">
           <h2 class="section-title">コンセプト</h2>
           <div class="flexbox justify-center items-center">
             <Feature
@@ -86,39 +99,35 @@ const news = (await getCollection('news')).sort(
               productImage="/img/feature001.jpg"
             />
           </div>
-        </section>
-        <section class="home-faq">
+        </section> -->
+        <!-- <section class="home-faq">
           <h2 class="section-title">よくある質問</h2>
-          <div class="faq-items">
+          <div class="faq-items max-w-720">
             <FAQItem
-            question="１つ目の質問をここに記す。"
-            answer="１つ目の回答をここに記す。"
-            />
-            <FAQItem
-            question="１つ目の質問をここに記す。"
-            answer="１つ目の回答をここに記す。"
-            />
-            <FAQItem
-            question="１つ目の質問をここに記す。"
-            answer="１つ目の回答をここに記す。"
+            question=""
+            answer=""
             />
           </div>
           <BtnMore link="/faq/" />
-        </section>
-        <section class="home-about">
+        </section> -->
+        <!-- <section class="home-about">
           <h2 class="section-title">事業者情報</h2>
-          <div class="company-info">
-            <dl>
-              <dt>屋号：</dt>
-              <dd>電子工房たそかれ（Atelier TASOKARE）</dd>
-              <dt>代表：</dt>
-              <dd>中村　徹</dd>
-              <dt>事業内容：</dt>
-              <dd>スマートフォン向けアプリケーションの企画・開発・販売</dd>
-            </dl>
+          <div class="main-container max-w-720">
+            <div class="content">
+              <div class="company-info">
+                <dl>
+                  <dt>屋号：</dt>
+                  <dd>電子工房たそかれ（Atelier TASOKARE）</dd>
+                  <dt>代表：</dt>
+                  <dd>中村　徹</dd>
+                  <dt>事業内容：</dt>
+                  <dd>スマートフォン向けアプリケーションの企画・開発・販売</dd>
+                </dl>
+              </div>
+            </div>
           </div>
           <BtnMore link="/about/" />
-        </section>
+        </section> -->
       </div>
     </main>
     <Footer />

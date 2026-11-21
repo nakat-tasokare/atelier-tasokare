@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import FAQItem from "../components/FAQItem.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'faq'>['data'];
+
+const { question, answer, published, order } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="sticky-footer">
+    <Header />
+    <main class="flex-1">
+      <div class="main-container max-w-720">
+        <div class="content-title">
+          <h2>FAQ</h2>
+          <h3>よくある質問</h3>
+        </div>
+        <div class="content">
+          <div class="faq-article">
+            <FAQItem
+            question={question}
+            answer={answer}
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

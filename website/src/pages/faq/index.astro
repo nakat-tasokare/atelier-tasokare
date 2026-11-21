@@ -1,0 +1,54 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import FAQItem from "../../components/FAQItem.astro";
+
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import { getCollection } from 'astro:content';
+
+const faqs = (await getCollection('faq')).sort(
+  (a, b) => {
+    let order = b.data.published.valueOf() - a.data.published.valueOf();
+
+    if (order === 0) {
+      order = b.data.order - a.data.order;
+    }
+
+    return order;
+  }
+);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="sticky-footer">
+    <Header />
+    <main class="flex-1">
+      <div class="main-container max-w-720">
+        <div class="content-title">
+          <h2>FAQ</h2>
+          <h3>よくある質問</h3>
+        </div>
+        <div class="faq-articles">
+          {faqs.map((item) => (
+            <div class="content">
+              <div class="faq-article">
+                <dl>
+                  <dt class="faq-question">Q.</dt>
+                  <dd class="faq-question">{item.data.question}</dd>
+                  <dt class="faq-answer">A.</dt>
+                  <dd class="faq-answer">{item.data.answer}</dd>
+                </dl>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

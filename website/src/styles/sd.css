@@ -751,6 +751,33 @@ body {
 }
 
 /*
+| layout
+*/
+.sticky-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.max-w-720 {
+  max-width: 720px;
+}
+@media (max-width: 599px) {
+  .max-w-720 {
+    max-width: 400px;
+  }
+}
+
+.max-w-400 {
+  max-width: 400px;
+}
+
+/*
 | Custom styles
 */
 /*
@@ -771,22 +798,13 @@ html {
 }
 
 body {
-  position: absolute;
   top: 0;
   left: 0;
   font-family: Inter, "Noto Sans JP", sans-serif;
   font-weight: 400;
   background-color: #f6f2e4;
-  min-width: 700px;
   min-height: 800px;
-  width: 100%;
 }
-@media (max-width: 599px) {
-  body {
-    min-width: 300px;
-  }
-}
-
 a, a:visited {
   text-decoration: none;
 }
@@ -800,13 +818,11 @@ ul {
 
 .main-container {
   display: block;
-  width: 700px;
   margin: 0 auto;
 }
 @media (max-width: 599px) {
   .main-container {
-    width: auto;
-    margin: 60px 20px 8px 20px;
+    margin: 0 auto;
   }
 }
 
@@ -861,6 +877,7 @@ ul {
   padding: 0 10px;
   border: 1px solid black;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
 }
 
 .flexbox {
@@ -935,6 +952,10 @@ ul {
 /*
 | Header
 */
+header {
+  height: 60px;
+}
+
 nav.header {
   display: flex;
   justify-content: space-between;
@@ -943,13 +964,14 @@ nav.header {
   background-image: url("/img/asa.png");
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding: 0 20px;
+  width: 100%;
+  height: 60px;
 }
 @media (max-width: 599px) {
   nav.header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     height: 60px;
     justify-content: center;
   }
@@ -1193,6 +1215,7 @@ footer .footer-info .company-info h2 {
   text-align: left;
   font-size: 1.6rem;
   font-weight: 400;
+  color: #ffffff;
 }
 @media (max-width: 599px) {
   footer .footer-info .company-info h2 {
@@ -1220,19 +1243,27 @@ footer .footer-info small.copyright {
   }
 }
 
+.preparing {
+  display: block;
+  margin: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: #363636;
+  text-align: center;
+}
+
 /*
 | Home
 */
 .home-container {
   display: block;
-  width: 100%;
   margin: 0 auto;
   padding: 0;
 }
 
 .home-main {
   display: block;
-  width: 100%;
   margin: 0 auto;
   padding: 20px 0;
   height: 500px;
@@ -1241,7 +1272,6 @@ footer .footer-info small.copyright {
 }
 @media (max-width: 599px) {
   .home-main {
-    width: auto;
     margin: 0 auto;
     padding: 20px 20px;
   }
@@ -1250,8 +1280,19 @@ footer .footer-info small.copyright {
 .home-main h2 {
   display: block;
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 50px;
   margin: 60px auto;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.home-main h3 {
+  display: block;
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 0 auto;
+  margin-bottom: 20px;
   text-align: center;
   padding: 4px 0;
 }
@@ -1308,9 +1349,17 @@ section.home-concept,
 section.home-faq,
 section.home-about {
   display: block;
-  width: 720px;
   margin: 0 auto;
   padding: 20px 0;
+}
+@media (max-width: 599px) {
+  section.home-feature,
+  section.home-news,
+  section.home-concept,
+  section.home-faq,
+  section.home-about {
+    margin: 0 20px;
+  }
 }
 
 .section-title {
@@ -1322,6 +1371,18 @@ section.home-about {
   padding: 4px 0;
 }
 
+.btn-more-container {
+  display: flex;
+  justify-content: end;
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 599px) {
+  .btn-more-container {
+    margin: 0 20px;
+  }
+}
+
 .btn-more {
   color: #ffffff;
   background-color: #ff8800;
@@ -1331,6 +1392,12 @@ section.home-about {
   padding: 4px 8px;
   width: 100px;
   margin: 8px;
+}
+@media (max-width: 599px) {
+  .btn-more {
+    width: 100%;
+    margin: 8px auto;
+  }
 }
 
 .btn-more img {
@@ -1381,22 +1448,18 @@ section.home-about {
 .news-items {
   display: block;
   overflow-y: auto;
-  padding: 4px 20px;
-  margin: 8px auto;
-  max-width: 720px;
   max-height: 240px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
+  padding: 10px;
 }
 @media (max-width: 599px) {
   .news-items {
-    max-height: 200px;
+    max-height: 400px;
   }
 }
 
 .news-items a {
   display: block;
-  color: #87c5ed;
+  color: #000000;
   font-size: 1.6rem;
   text-align: right;
 }
@@ -1405,10 +1468,9 @@ section.home-about {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: white;
   font-size: 1.6rem;
   padding: 4px 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #999999;
 }
 @media (max-width: 599px) {
   .news-item {
@@ -1434,7 +1496,7 @@ section.home-about {
 
 .news-header .news-tag {
   display: inline-block;
-  border: 1px solid white;
+  border: 1px solid #000000;
   padding: 1px 4px;
   width: 80px;
   text-align: center;
@@ -1442,7 +1504,7 @@ section.home-about {
 }
 
 .news-item a.news-title {
-  color: #87c5ed;
+  color: #000000;
   padding: 0 8px;
 }
 @media (max-width: 599px) {
@@ -1453,30 +1515,200 @@ section.home-about {
   }
 }
 
+.news-article {
+  color: #000000;
+  margin: 10px 0;
+}
+
+.news-article p.published {
+  color: #999999;
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+.news-article h2 {
+  font-size: 1.6rem;
+  padding: 0 10px;
+}
+
+.news-article p {
+  font-size: 1.6rem;
+  padding: 0 10px;
+}
+
+/*
+| Products
+*/
+.product-card {
+  font-size: 1.6rem;
+  padding: 10px;
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.product-info h2 {
+  display: block;
+  color: black;
+  font-size: 2rem;
+  padding: 4px 0;
+}
+
+.product-info p {
+  display: block;
+  color: black;
+  font-size: 1.6rem;
+  padding: 4px 0;
+}
+
+.product-card .product-status {
+  display: block;
+  color: gray;
+  font-size: 1.6rem;
+  padding: 10px;
+  text-align: right;
+}
+
+.product-card .product-detail {
+  color: #87c5ed;
+  font-size: 1.2rem;
+  border: 1px solid #87c5ed;
+  padding: 1px;
+  width: 100px;
+  text-align: center;
+  margin: 0;
+}
+
+.product-card .btn-more-container {
+  margin: 0;
+}
+
+/*
+| Products detail
+*/
+.products-detail img {
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.products-detail .products {
+  border-top: 1px solid black;
+}
+
+.products-detail .products a {
+  color: #87c5ed;
+}
+
+.downloads {
+  display: flex;
+  justify-content: center;
+}
+
+.downloads .android {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+  border: 1px solid green;
+  border-radius: 4px;
+  background-color: green;
+  padding: 4px;
+  width: 100px;
+  margin: 0 4px 8px 0;
+}
+
+.downloads .android:hover {
+  cursor: pointer;
+  color: black;
+  background-color: transparent;
+}
+
+.downloads .ios {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: black;
+  padding: 4px;
+  width: 100px;
+  margin: 0 0 8px 4px;
+}
+
+.downloads .ios:hover {
+  cursor: pointer;
+  color: black;
+  background-color: transparent;
+}
+
+.products-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products-footer a.to-movie {
+  color: white;
+  background-color: #ff8800;
+  font-size: 1.6rem;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 8px;
+  width: 80px;
+  border: 1px solid #ff8800;
+}
+
+.products-footer a.to-movie:hover {
+  color: #ff8800;
+  background-color: #f6f2e4;
+  font-size: 1.6rem;
+  border: 1px solid #ff8800;
+}
+
+.products-footer a.to-faq {
+  color: white;
+  background-color: #363636;
+  font-size: 1.6rem;
+  text-align: center;
+  border-radius: 4px;
+  margin-left: 8px;
+  padding: 4px 8px;
+  width: 80px;
+  border: 1px solid #363636;
+}
+
+.products-footer a.to-faq:hover {
+  color: #363636;
+  background-color: #f6f2e4;
+  font-size: 1.6rem;
+  border: 1px solid #363636;
+}
+
 /*
 | Company info
 */
 .company-info {
-  font-size: 1.2rem;
-  max-width: 720px;
-  margin: 8px auto;
-  padding: 0 16px;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 1.6rem;
+  padding: 10px;
+  color: #000000;
   border-radius: 8px;
+  max-width: 720px;
 }
 
 .company-info dl {
   display: grid;
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 16rem 1fr;
   margin: 0;
 }
 
 .company-info dt,
 .company-info dd {
   margin: 0;
-  padding: 8px 0;
-  border-bottom: 1px solid #ccc;
+  padding: 4px 0;
+  border-bottom: 1px solid #999999;
 }
 
 .company-info dt {
@@ -1509,14 +1741,14 @@ section.home-about {
 .faq-items {
   display: block;
   overflow-y: auto;
-  padding: 4px 20px;
+  padding: 10px 20px;
   margin: 8px auto;
-  max-width: 720px;
   max-height: 300px;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
   font-size: 1.6rem;
+  max-width: 720px;
 }
 @media (max-width: 599px) {
   .faq-items {
@@ -1525,8 +1757,8 @@ section.home-about {
 }
 
 .faq-item {
-  margin: 8px 0;
-  padding: 8px 0;
+  padding: 4px;
+  border-bottom: 1px solid #999999;
 }
 
 .faq-item dl {
@@ -1573,16 +1805,66 @@ section.home-about {
   color: #ff8800;
 }
 
+.faq-article {
+  padding: 8px;
+}
+
+.faq-article dl {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  margin: 0;
+}
+
+.faq-article dt,
+.faq-article dd {
+  margin: 0;
+}
+
+.faq-article dt {
+  text-align: right;
+  padding-right: 1rem;
+  font-weight: bold;
+}
+
+.faq-article dd {
+  text-align: left;
+}
+
+@media (max-width: 599px) {
+  .faq-article dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 599px) {
+  .faq-article dt {
+    text-align: left;
+    padding: 0.9em 0 0;
+  }
+}
+
+.faq-article dt.faq-question {
+  color: #87c5ed;
+}
+
+.faq-article dt.faq-answer {
+  font-size: 1.6rem;
+  color: #ff8800;
+}
+
+.faq-article .faq-item {
+  border-bottom: none;
+}
+
 /*
 | Privacy Policy
 */
-section.privacypolicy {
+.privacypolicy {
   display: block;
   margin: 20px auto;
   padding: 20px;
-  max-width: 720px;
+  overflow-wrap: anywhere;
 }
-
 .privacypolicy-container h1 {
   font-size: 2rem;
   margin-top: 8px;
@@ -1622,4 +1904,6 @@ section.privacypolicy {
 code {
   font-family: Inter, "Noto Sans JP", sans-serif;
   font-size: 1.6rem;
-}/*# sourceMappingURL=sd.css.map */
+}
+
+/* debug: *//*# sourceMappingURL=sd.css.map */

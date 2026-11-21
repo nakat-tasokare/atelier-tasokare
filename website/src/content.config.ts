@@ -23,6 +23,7 @@ const products = defineCollection({
 		z.object({
 			productName: z.string(),
 			description: z.string(),
+			published: z.coerce.date(),
 			thumbnail: z.optional(image()),
 		}),
 });
@@ -34,6 +35,7 @@ const news = defineCollection({
 			title: z.string(),
 			description: z.string(),
 			published: z.coerce.date(),
+			order: z.number().int().default(0),
 			thumbnail: z.optional(image()),
 			tag: z.string().default('NEWS'),
 		}),
@@ -43,10 +45,10 @@ const faq = defineCollection({
 	loader: glob({ base: './src/content/faq', pattern: '**/*.{md,mdx}' }),
 	schema: ({ image }) =>
 		z.object({
-			title: z.string(),
-			description: z.string(),
+			question: z.string(),
+			answer: z.string(),
 			published: z.coerce.date(),
-			thumbnail: z.optional(image()),
+			order: z.number().int().default(0),
 		}),
 });
 
