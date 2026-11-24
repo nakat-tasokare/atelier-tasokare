@@ -1,3 +1,5 @@
 website_buckup/
 design/
 website/src/styles/sd.css.map
+website/.wrangler/
+website/package-lock.json

@@ -26,9 +26,9 @@ const news = (await getCollection('news')).sort(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="sticky-footer">
     <Header />
-    <main>
+    <main class="flex-1">
       <div class="home-container">
         <section class="home-main">
           <h2>たそかれホーム</h2>

@@ -1033,6 +1033,14 @@ nav.header ul li a:hover {
   }
 }
 
+nav.header ul li a.active {
+  border-bottom: 2px solid $color-accent;
+
+  @include for-phone-only {
+    border: none;
+  }
+}
+
 #menu-btn {
   display: none;
   z-index: 100;
