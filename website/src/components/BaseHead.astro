@@ -3,9 +3,9 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/sd.css';
 import type { ImageMetadata } from 'astro';
-import FallbackImage from '../assets/blog-placeholder-1.jpg';
+import FallbackImage from '../assets/og.jpg';
 import { SITE_TITLE } from '../consts';
-import { Font } from 'astro:assets';
+// import { Font } from 'astro:assets';
 
 interface Props {
 	title: string;
@@ -15,12 +15,16 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
+// 検索エンジンを回避するか
+const isPrivate = true;
+
 const { title, description, image = FallbackImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+{isPrivate && <meta name="robots" content="noindex, nofollow, noarchive" />}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
@@ -32,7 +36,12 @@ const { title, description, image = FallbackImage } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
-<Font cssVariable="--font-atkinson" preload />
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+<!-- <Font cssVariable="--font-inter" preload /> -->
+<!-- <Font cssVariable="--font-noto-sans-jp" preload /> -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

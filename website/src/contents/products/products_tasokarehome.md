@@ -1,7 +1,7 @@
 ---
 productName: 'たそかれホーム'
 description: 'ホーム画面を見やすくシンプルにするアプリ。'
-published: '2026-12-01'
+published: '2026-11-27'
 thumbnail: ''
 ---
 # たそかれホーム

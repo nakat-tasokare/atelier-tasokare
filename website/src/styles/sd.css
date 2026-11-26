@@ -72,7 +72,7 @@ a {
 */
 html {
   font-size: 62.5%;
-  font-family: Inter, "Noto Sans JP", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
 }
 
 body {
@@ -767,15 +767,6 @@ body {
 .max-w-720 {
   max-width: 720px;
 }
-@media (max-width: 599px) {
-  .max-w-720 {
-    max-width: 400px;
-  }
-}
-
-.max-w-400 {
-  max-width: 400px;
-}
 
 /*
 | Custom styles
@@ -800,8 +791,10 @@ html {
 body {
   top: 0;
   left: 0;
-  font-family: Inter, "Noto Sans JP", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
   background-color: #f6f2e4;
   min-height: 800px;
 }
@@ -822,7 +815,7 @@ ul {
 }
 @media (max-width: 599px) {
   .main-container {
-    margin: 0 auto;
+    margin: 0 20px;
   }
 }
 
@@ -873,7 +866,7 @@ ul {
 
 .content {
   display: block;
-  margin: 20px;
+  margin: 20px 0;
   padding: 0 10px;
   border: 1px solid black;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -1388,7 +1381,7 @@ section.home-about {
 }
 @media (max-width: 599px) {
   .btn-more-container {
-    margin: 0 20px;
+    margin: 0;
   }
 }
 
@@ -1400,7 +1393,8 @@ section.home-about {
   border-radius: 20px;
   padding: 4px 8px;
   width: 100px;
-  margin: 8px;
+  margin: 0 20px;
+  padding: 10px;
 }
 @media (max-width: 599px) {
   .btn-more {
@@ -1870,10 +1864,10 @@ section.home-about {
 */
 .privacypolicy {
   display: block;
-  margin: 20px auto;
   padding: 20px;
   overflow-wrap: anywhere;
 }
+
 .privacypolicy-container h1 {
   font-size: 2rem;
   margin-top: 8px;
@@ -1911,7 +1905,7 @@ section.home-about {
 }
 
 code {
-  font-family: Inter, "Noto Sans JP", sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
   font-size: 1.6rem;
 }
 

@@ -28,7 +28,7 @@ $color-white: #ffffff;
 $color-black: #000000;
 $color-gray: #333333;
 $color-bgblack: rgba(0, 0, 0, 0.6);
-$font-main: Inter, 'Noto Sans JP', sans-serif;
+$font-main: 'Inter', 'Noto Sans JP', sans-serif;
 $font-small: 1.2rem;
 $font-middle: 2.0rem;
 $font-large: 4.0rem;
@@ -763,14 +763,6 @@ body {
 
 .max-w-720 {
   max-width: 720px;
-
-  @include for-phone-only {
-    max-width: 400px;
-  }
-}
-
-.max-w-400 {
-  max-width: 400px;
 }
 
 /*
@@ -797,7 +789,9 @@ body {
   top: 0;
   left: 0;
   font-family: $font-main;
+  font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
   background-color: $color-base;
   min-height: 800px;
 
@@ -821,7 +815,7 @@ ul {
   margin: 0 auto;
 
   @include for-phone-only {
-    margin:0 auto;
+    margin:0 20px;
   }
 }
 
@@ -870,7 +864,7 @@ ul {
 
 .content {
   display: block;
-  margin: 20px;
+  margin: 20px 0;
   padding: 0 10px;
   border: 1px solid black;
   box-shadow: $shadow-middle;
@@ -1364,7 +1358,7 @@ section.home-about {
   margin: 0 auto;
 
   @include for-phone-only {
-    margin: 0 20px;
+    margin: 0;
   }
 }
 
@@ -1376,7 +1370,8 @@ section.home-about {
   border-radius: 20px;
   padding: 4px 8px;
   width: 100px;
-  margin: 8px;
+  margin: 0 20px;
+  padding: 10px;
 
   @include for-phone-only {
     width: 100%;
@@ -1844,12 +1839,8 @@ section.home-about {
 */
 .privacypolicy {
   display: block;
-  margin: 20px auto;
   padding: 20px;
   overflow-wrap: anywhere;
-
-  @include for-phone-only {
-  }
 }
 
 .privacypolicy-container h1 {
